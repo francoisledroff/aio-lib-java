@@ -21,10 +21,8 @@ import java.util.Map;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.mockito.junit.MockitoJUnitRunner;
 
-@RunWith(MockitoJUnitRunner.class)
+
 public class EventVerifierTest {
 
   private static final String TEST_CLIENT_ID = "client_id1";
@@ -33,8 +31,16 @@ public class EventVerifierTest {
   private static final String TEST_DIGI_SIGN_2 = "GpMONiPMHY51vpHF3R9SSs9ogRn8i2or/bvV3R+PYXGgDzAxDhRdl9dIUp/qQ3vsxDGEv045IV4GQ2f4QbsFvWLJsBNyCqLs6KL8LsRoGfEC4Top6c1VVjrEEQ1MOoFcoq/6riXzg4h09lRTfARllVv+icgzAiuv/JW2HNg5yQ4bqenFELD6ipCStuaI/OGS0A9s0Hc6o3aoHz3r5d5DecwE6pUdpG8ODhKBM+34CvcvMDNdrj8STYWHsEUqGdR9klpaqaC1QRYFIO7WgbgdwsuGULz6Sjm+q5s5Wh++fz5E+gXkizFviD389gDIUylFTig/1h7WTLRDuSz69Q+C5w==";
   private static final String TEST_PUB_KEY1_PATH = "qe/keys/pub-key-voy5XEbWmT.pem";
   private static final String TEST_PUB_KEY2_PATH = "qe/keys/pub-key-maAv3Tg6ZH.pem";
-
+  static int port = 9999;
   private EventVerifier underTest;
+
+  // TODO use wiremock to stub https://static.adobeioevents.com
+  // and pass the wiremock url to the EventVerifier
+  // and use some test keys and pem
+  // because here you are doing an integration test not a simple junit test
+  // you actually need these public pem files to be available
+  //@Rule
+  //public WireMockRule wireMockRule = new WireMockRule(port);
 
   @Before
   public void setup() {

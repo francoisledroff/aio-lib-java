@@ -15,6 +15,7 @@ import feign.Param;
 import feign.RequestLine;
 
 public interface PublicKeyCdnApi {
+
   @RequestLine(value = "GET {pubKeyPath}")
   String getPubKeyFromCDN(@Param("pubKeyPath") String pubKeyPath);
 }
