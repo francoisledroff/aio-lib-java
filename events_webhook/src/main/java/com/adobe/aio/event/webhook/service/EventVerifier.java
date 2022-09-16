@@ -89,6 +89,10 @@ public class EventVerifier {
         sig.initVerify(getPublicKey(publicKeyPaths[i]));
         sig.update(data);
         result = result && sig.verify(sign);
+        // TODO may be this is not the behavior you had in mind ?
+        // both should succeed, but only one veification is enough
+        // I'm guessing we have 2 in case we cached an out-dated pem file
+        // we should document that further add a README file
       } catch (GeneralSecurityException e) {
         throw new AIOException("Error verifying signature for public key " + publicKeyPaths[i]
             +". Reason -> " + e.getMessage(), e);
